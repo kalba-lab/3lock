@@ -26,9 +26,9 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python -m threelock
-python -m threelock --vault ~/my.3lock
-python -m threelock --timeout 10
+python -m threelock                      # default vault ~/.3lock/vault.3lock
+python -m threelock --vault ~/my.3lock   # custom vault location
+python -m threelock --timeout 10         # session timeout in minutes (default: 5)
 ```
 
 Default vault: `~/.3lock/vault.3lock`
@@ -40,7 +40,7 @@ Default vault: `~/.3lock/vault.3lock`
 - Session timeout
 - No cloud, no sync, no tracking
 
-**No password recovery.** Back up your vault.
+**⚠️ No password recovery.** Back up your vault.
 
 ## License
 
@@ -49,3 +49,6 @@ MIT, © [Kalba Lab](https://kalba.dev)
 ## Links
 
 - [3lock.app](https://3lock.app)
+
+
+
