@@ -578,6 +578,25 @@ class App(tk.Tk):
 
 def run_gui(vault_path: Path, timeout_minutes: int = 5) -> int:
     """Run the GUI application."""
+    import tkinter
+    
+    # Check Tk version - 8.5 has rendering issues on macOS
+    tk_version = float(tkinter.TkVersion)
+    if tk_version < 8.6:
+        print(f"""
+╔══════════════════════════════════════════════════════════════════╗
+║  WARNING: Tk {tk_version} detected - GUI may not render correctly!     ║
+║                                                                  ║
+║  macOS system Tk 8.5 has known issues with ttk widgets.          ║
+║                                                                  ║
+║  To fix, install Python with newer Tk:                           ║
+║    brew install python@3.11                                      ║
+║    /opt/homebrew/bin/python3.11 -m venv venv                     ║
+║    source venv/bin/activate                                      ║
+║    pip install argon2-cffi cryptography                          ║
+╚══════════════════════════════════════════════════════════════════╝
+""")
+    
     try:
         app = App(vault_path, timeout_minutes)
         app.mainloop()

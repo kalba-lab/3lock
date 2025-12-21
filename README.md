@@ -2,73 +2,50 @@
 
 Private notes & passwords. Local. Encrypted. Simple.
 
-## Philosophy
+## Install
 
-- One encrypted file, your data
-- One password (+ YubiKey support coming)
-- Works offline forever
-- Code you can read in an evening
+### macOS
 
-## Features
+Download [3Lock.dmg](https://github.com/kalba-lab/3lock/releases) → drag to Applications.
 
-- AES-256-GCM encryption
-- Argon2id key derivation (~1 sec per attempt)
-- Hierarchical encryption (titles / content)
-- Secure clipboard with auto-clear (30 sec)
-- Session timeout (configurable)
-- Cross-platform (macOS, Linux, Windows) — tested on macOS Silicon
-- Minimal UI with tkinter (Python standard library, no extra dependencies)
-
-## Installation
+### From source
 
 ```bash
 pip install -r requirements.txt
 python -m threelock
 ```
 
+**⚠️ macOS:** System Python has Tk 8.5 with rendering bugs. Use Homebrew Python:
+```bash
+brew install python@3.11
+/opt/homebrew/bin/python3.11 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ```bash
-# Run with default vault location
 python -m threelock
-
-# Specify custom vault location
-python -m threelock --vault ~/Documents/my.3lock
-
-# Set session timeout (default: 5 minutes)
+python -m threelock --vault ~/my.3lock
 python -m threelock --timeout 10
 ```
 
-## Data Location
-
-By default, your encrypted vault is stored at:
-
-```
-~/.3lock/vault.3lock
-```
-
-This is a single JSON file containing all your encrypted data. Back it up!
+Default vault: `~/.3lock/vault.3lock`
 
 ## Security
 
-- Titles encrypted with separate key from content
-- Passwords never displayed, only copied to clipboard
-- Clipboard auto-clears after 30 seconds
-- Session timeout clears keys from memory
-- Argon2id with ~1 sec derivation (brute-force resistant)
-- Open source - audit it yourself
+- AES-256-GCM + Argon2id
+- Clipboard auto-clear (30 sec)
+- Session timeout
+- No cloud, no sync, no tracking
 
-## Recovery
-
-**If you forget your master password, there is no recovery.**
-
-This is by design. Your data is encrypted locally and never leaves your device. Keep your master password safe!
+**No password recovery.** Back up your vault.
 
 ## License
 
-MIT
+MIT, © [Kalba Lab](https://kalba.dev)
 
 ## Links
 
-- Website: https://3lock.app
-- GitHub: https://github.com/kalba-lab/3lock
+- [3lock.app](https://3lock.app)
