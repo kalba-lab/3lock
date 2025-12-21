@@ -6,7 +6,7 @@ Private notes & passwords. Local. Encrypted. Simple.
 
 ### macOS
 
-Download [3Lock.dmg](https://github.com/kalba-lab/3lock/releases) → drag to Applications.
+Download [3Lock.dmg](https://github.com/kalba-lab/3lock/releases) (Apple Silicon) → drag to Applications.
 
 ### From source
 
